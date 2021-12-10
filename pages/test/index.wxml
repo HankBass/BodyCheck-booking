@@ -1,0 +1,4 @@
+<!--pages/test/index.wxml-->
+<text>pages/test/index.wxml</text>
+<van-button type="primary" bind:click="onDisplay">按钮</van-button>
+<van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
