@@ -16,7 +16,7 @@
   <view class="title h2">订单管理</view>
   <view class="order">
     <van-row gutter="14">
-      <van-col span="6" class="list" wx:for="{{orderList}}" wx:key="index">
+      <van-col span="6" class="list" wx:for="{{orderList}}" wx:key="index" data-item='{{item}}' bindtap="handleGoList">
         <view class="item" style="background-color: {{item.bgColor}};color: {{item.color}};">
           <view class="icon">
             <van-icon name="{{item.icon}}" size="24px" />

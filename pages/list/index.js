@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    active:'all',
     orderList:[
       {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000",bookingData:{person:"张三",time:"2021-12-06",address:"广东医科大学"}},
       {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
@@ -20,7 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      active:options.active
+    })
   },
 
   /**
@@ -70,5 +73,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleGoDetail(){
+    wx.navigateTo({
+      url: '../detail/index'
+    })
   }
 })

@@ -1,16 +1,22 @@
 <!--pages/list/index.wxml-->
 <view class="list body">
-  <van-tabs swipeable sticky>
-    <van-tab title="全部">
+  <van-tabs swipeable sticky active="{{ active }}">
+    <van-tab title="全部" name="all">
+      <view class="card clearfix" wx:for="{{orderList}}" wx:key="index" wx:if="orderList.length" bindtap="handleGoDetail">
+        <view class="title clearfix">
+          <view class="text">
+            <van-icon name="like" color="red" />
+            体检
+          </view>
+          <view class="status">{{item.status}}</view>
+        </view>
 
-      <view class="card clearfix" wx:for="{{orderList}}" wx:key="index" wx:if="orderList.length">
-        <view class="status">{{item.status}}</view>
         <view class="name">{{item.name}}</view>
         <view class="price">
           <text>总费用：</text>
           <text class="num">{{item.price}}元</text>
         </view>
-        <view wx:if="{{item.bookingData}}"><van-divider /></view>
+
         <view class="booking-info" wx:if="{{item.bookingData}}">
           <view class="item">
             <text>体检人：</text>
@@ -27,10 +33,11 @@
         </view>
       </view>
       <view wx:if="{{!orderList.length}}">
-        <van-empty description="暂无数据"/>
+        <van-empty description="暂无数据" />
       </view>
     </van-tab>
-    <van-tab title="已预约">内容 2</van-tab>
-    <van-tab title="已取消">内容 3</van-tab>
+    <van-tab title="待付款" name="toPay">内容 2</van-tab>
+    <van-tab title="待体检" name="toCheck">内容 3</van-tab>
+    <van-tab title="退款" name="refund">内容 3</van-tab>
   </van-tabs>
 </view>

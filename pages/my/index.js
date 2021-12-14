@@ -6,10 +6,10 @@ Page({
    */
   data: {
     orderList:[
-      {image:"image1",label:"全部订单",icon:"orders-o",bgColor:'#FCF6F6',color:"#8C8484" },
-      {image:"image2",label:"待付款",icon:"balance-pay",bgColor:'#FCF7F1',color:"#8C8484" },
-      {image:"image3",label:"待体检",icon:"guide-o",bgColor:'#FAF7EB',color:"#8C8484"  },
-      {image:"image4",label:"退款",icon:"balance-o",bgColor:'#FFF7EE',color:"#8C8484"  },
+      {image:"image1",label:"全部订单",icon:"orders-o",bgColor:'#FCF6F6',color:"#8C8484" ,type:"all"},
+      {image:"image2",label:"待付款",icon:"balance-pay",bgColor:'#FCF7F1',color:"#8C8484",type:"toPay" },
+      {image:"image3",label:"待体检",icon:"guide-o",bgColor:'#FAF7EB',color:"#8C8484",type:"toCheck"  },
+      {image:"image4",label:"退款",icon:"balance-o",bgColor:'#FFF7EE',color:"#8C8484",type:"refund"  },
     ],
   },
 
@@ -67,5 +67,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleGoList(event){
+    const currentTarget = event.currentTarget.dataset.item
+    wx.navigateTo({
+      url: `../list/index?active=${currentTarget.type}`,
+    })
   }
 })

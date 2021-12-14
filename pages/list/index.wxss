@@ -5,19 +5,31 @@
 }
 
 .list .card {
-  margin: 0 20rpx;
+  margin: 20rpx;
   padding: 20rpx;
   border-radius: 8rpx;
   background-color: #fff;
   box-shadow: 0 8rpx 12rpx #ebedf0;
-  margin-bottom: 20rpx;
 }
 
+.list .card .title{
+
+}
+.list .card .title .text{
+  font-weight: 700;
+  float: left;
+}
 .list .card .status {
+  float: right;
   text-align: right;
+  color: #ee0a24;
 }
 .list .card .name {
   margin: 16rpx 0;
+  padding: 0 20rpx;
+}
+.card .price{
+  padding: 0 20rpx;
 }
 .card .price .num {
   color: #ee0a24;
@@ -27,9 +39,11 @@
   background-color: #f8f8f8;
   border-radius: 8px;
   color: #58727e;
+  padding: 20rpx;
+  margin-top: 20rpx;
 }
 .card .booking-info .item{
-  padding: 16rpx 30rpx 10rpx 30rpx;
+  padding-bottom: 10rpx;
   display: flex;
   font-size: 28rpx;
 }
