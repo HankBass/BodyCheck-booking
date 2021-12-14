@@ -11,7 +11,7 @@
         </block>
       </swiper>
     </view>
-    <view class="h1">我要体检</view>
+    <view class="h2">我要体检</view>
     <view class="ul">
       <block wx:for="{{list}}" wx:key="*this">
         <view class="li {{item.image}}">

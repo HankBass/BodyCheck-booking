@@ -1,0 +1,36 @@
+<!--pages/list/index.wxml-->
+<view class="list body">
+  <van-tabs swipeable sticky>
+    <van-tab title="全部">
+
+      <view class="card clearfix" wx:for="{{orderList}}" wx:key="index" wx:if="orderList.length">
+        <view class="status">{{item.status}}</view>
+        <view class="name">{{item.name}}</view>
+        <view class="price">
+          <text>总费用：</text>
+          <text class="num">{{item.price}}元</text>
+        </view>
+        <view wx:if="{{item.bookingData}}"><van-divider /></view>
+        <view class="booking-info" wx:if="{{item.bookingData}}">
+          <view class="item">
+            <text>体检人：</text>
+            <text>{{item.bookingData.person}}</text>
+          </view>
+          <view class="item">
+            <text>体检时间：</text>
+            <text>{{item.bookingData.time}}</text>
+          </view>
+          <view class="item">
+            <text>体检地点：</text>
+            <text>{{item.bookingData.address}}</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{!orderList.length}}">
+        <van-empty description="暂无数据"/>
+      </view>
+    </van-tab>
+    <van-tab title="已预约">内容 2</van-tab>
+    <van-tab title="已取消">内容 3</van-tab>
+  </van-tabs>
+</view>

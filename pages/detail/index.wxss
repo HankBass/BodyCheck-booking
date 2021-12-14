@@ -1,0 +1,46 @@
+/* pages/detail/index.wxss */
+.detail {
+  padding: 30rpx 20rpx;
+  min-height: 100vh;
+}
+
+.detail .card {
+  padding: 20rpx;
+  border-radius: 8rpx;
+  background-color: #fff;
+  box-shadow: 0 8rpx 12rpx #ebedf0;
+  margin-bottom: 20rpx;
+}
+
+.detail .info {
+
+}
+
+.detail .info .list {
+  display: flex;
+  margin-bottom: 10rpx;
+
+}
+
+.detail .info .name {
+  flex: 0 0 auto;
+
+}
+.card .title{
+  margin-bottom: 20rpx;
+}
+.detail .order .item{
+  margin-bottom: 10rpx;
+}
+.detail .add-order .item{
+  margin-bottom: 10rpx;
+}
+.money .price{
+  color: #ee0a24;
+  font-weight: 500;
+  font-size: 40rpx;
+}
+
+.refund{
+  margin-top: 100rpx;
+}

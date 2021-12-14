@@ -1,0 +1,45 @@
+/* pages/my.wxss */
+.my {
+  height: 100vh;
+  background: #eaeaea;
+}
+
+.info {
+  background-color: #fff;
+  padding: 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.number {
+  line-height: 88prx;
+  height: 88rpx;
+  padding-top: 20rpx;
+  
+
+}
+
+.title {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.order {
+  background-color: #fff;
+  padding: 40rpx 30rpx;
+}
+
+.order .list .item {
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.order .list .item .icon {
+  margin-bottom: 16rpx;
+}
+
+.logout {
+  padding: 20rpx 30rpx;
+  margin-top: 100px;
+  text-align: center;
+
+}

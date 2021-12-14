@@ -1,0 +1,32 @@
+<!--pages/my.wxml-->
+<view class="my">
+  <view class="info">
+    <van-row>
+      <van-col span="4">
+        <view>
+          <van-icon name="manager" size="44px" />
+        </view>
+      </van-col>
+      <van-col span="18">
+        <view class="number">186 **** 6666</view>
+      </van-col>
+    </van-row>
+  </view>
+
+  <view class="title h2">订单管理</view>
+  <view class="order">
+    <van-row gutter="14">
+      <van-col span="6" class="list" wx:for="{{orderList}}" wx:key="index">
+        <view class="item" style="background-color: {{item.bgColor}};color: {{item.color}};">
+          <view class="icon">
+            <van-icon name="{{item.icon}}" size="24px" />
+          </view>
+          <view>{{item.label}}</view>
+        </view>
+      </van-col>
+    </van-row>
+  </view>
+  <view class="logout">
+    <van-button plain type="primary" size="large">退出登录</van-button>
+  </view>
+</view>

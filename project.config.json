@@ -54,7 +54,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
   "appid": "wx9e570b84e87c8262",
-  "projectname": "Medical-appointment",
+  "projectname": "BodyCheck-booking",
   "debugOptions": {
     "hidedInDevtools": []
   },

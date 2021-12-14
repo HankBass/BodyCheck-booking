@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/detail/index",
+    "pages/list/index",
+    "pages/my/index",
     "pages/index/index",
     "pages/test/index",
-    "pages/logs/logs",
-    "pages/test"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,8 +14,27 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "selectedIconPath": "images/home_1.png",
+        "iconPath": "images/home_2.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/my_1.png",
+        "iconPath": "images/my_2.png",
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  },
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
-    "van-calendar": "@vant/weapp/calendar/index"
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }
