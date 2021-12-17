@@ -11,12 +11,47 @@
 }
 .li{
   width: 47%;
-  height:140rpx;
+  height:180rpx;
   background-color: red;
-  margin:20rpx 0 20rpx 0;
+  margin:0 0 40rpx 0;
   color: #fff;
   border-radius: 10rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-weight: bolder;
+}
+.h2.text-align-center{
+  line-height: 60rpx;
+}
+.demo-text-1{
+  background:url(http://www.gdmuah.com/images/banner.jpg);
+  background-size:100% 100%;
+  height:100%;
+}
+.demo-text-2{
+  background:url(http://www.gdmuah.com/images/banner3.jpg);
+  background-size:100% 100%;
+  height:100%;
+}
+.demo-text-3{
+  background:url(http://www.gdmuah.com/images/banner2.jpg);
+  background-size:100% 100%;
+  height:100%;
+}
+.image1{
+  background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2460831861-3F5141A08CEEEB837A9B14D94F565B28%2F0%3Ffmt%3Djpg%26size%3D26%26h%3D505%26w%3D900%26ppv%3D1.jpg&refer=http%3A%2F%2Fqqpublic.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642299766&t=3288b5bb1a5b1b39038d4a81260edfe4);
+  background-size:100% 100%;
+}
+.image2{
+  background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs9.rr.itc.cn%2Fr%2FwapChange%2F201610_12_11%2Fa10qxq33770848135.jpg&refer=http%3A%2F%2Fs9.rr.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642299817&t=f2d75884d7f0b48ea45aba134611cd0b);
+  background-size:100% 100%;
+}
+.image3{
+  background: url(https://img0.baidu.com/it/u=3835763679,651394869&fm=26&fmt=auto);
+  background-size:100% 100%;
+}
+.image4{
+  background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180302%2F3eecc0a97be04c5daa55cb3f75eaddd6.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642297957&t=15e76fc1c7244071af9147a8df185e32);
+  background-size:100% 100%;
 }
