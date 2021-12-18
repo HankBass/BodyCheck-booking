@@ -5,7 +5,8 @@
     "pages/detail/index",
     "pages/my/index",
     "pages/test/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/baseInfo/baseInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,14 +19,14 @@
     "list": [
       {
         "selectedIconPath": "images/home_2.png",
-        "selectedColor": "#2f7a0e", 
+        "selectedColor": "#2f7a0e",
         "iconPath": "images/home_1.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
         "selectedIconPath": "images/my_2.png",
-        "selectedColor": "#2f7a0e", 
+        "selectedColor": "#2f7a0e",
         "iconPath": "images/my_1.png",
         "pagePath": "pages/my/index",
         "text": "我的"
