@@ -1,0 +1,36 @@
+/* pages/booking/addPage/index.wxss */
+.tips{
+  margin: 20rpx 0;
+}
+.item{
+  display: flex;
+}
+.name{
+  flex: 1;
+}
+
+.combo .name .text{
+  display: inline-block;
+  margin-right: 10rpx;
+  line-height: 40rpx;
+  text-align: center;
+  vertical-align: top;
+}
+.price{
+  display: flex;
+  flex: 0 1 340rpx;
+}
+.price .discount {
+  font-size: 36rpx;
+  color: red;
+  font-weight: 700;
+
+}
+.line{
+  display: inline-block;
+  margin:0 10rpx;
+}
+.price .origin{
+  line-height: 50rpx;
+  color: #ccc;
+}

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/booking/addPage/index",
     "pages/index/index",
     "pages/list/index",
     "pages/detail/index",
@@ -18,14 +19,14 @@
     "list": [
       {
         "selectedIconPath": "images/home_2.png",
-        "selectedColor": "#2f7a0e", 
+        "selectedColor": "#2f7a0e",
         "iconPath": "images/home_1.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
         "selectedIconPath": "images/my_2.png",
-        "selectedColor": "#2f7a0e", 
+        "selectedColor": "#2f7a0e",
         "iconPath": "images/my_1.png",
         "pagePath": "pages/my/index",
         "text": "我的"
@@ -37,6 +38,12 @@
     "van-calendar": "@vant/weapp/calendar/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-steps": "@vant/weapp/steps/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   }
 }
