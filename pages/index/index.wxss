@@ -11,7 +11,7 @@
 }
 .li{
   width: 47%;
-  height:180rpx;
+  height: 180rpx;
   background-color: red;
   margin:0 0 40rpx 0;
   color: #fff;

@@ -6,7 +6,8 @@
     "pages/detail/index",
     "pages/my/index",
     "pages/test/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/baseInfo/baseInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
