@@ -1,0 +1,44 @@
+/* pages/booking/pay/pay.wxss */
+.pay{
+  padding: 20rpx;
+}
+.card {
+  padding: 20rpx;
+  border-radius: 8rpx;
+  background-color: #fff;
+  box-shadow: 0 8rpx 12rpx #ebedf0;
+  margin-bottom: 20rpx;
+}
+
+.info {
+
+}
+
+.info .list {
+  display: flex;
+  margin-bottom: 10rpx;
+
+}
+
+.info .name {
+  flex: 0 0 auto;
+
+}
+.card .title{
+  margin-bottom: 20rpx;
+}
+.order .item{
+  margin-bottom: 10rpx;
+}
+.add-order .item{
+  margin-bottom: 10rpx;
+}
+.money .price{
+  color: #ee0a24;
+  font-weight: 500;
+  font-size: 40rpx;
+}
+
+.refund{
+  margin-top: 100rpx;
+}

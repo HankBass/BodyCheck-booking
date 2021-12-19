@@ -1,0 +1,39 @@
+<!--pages/booking/pay/pay.wxml-->
+<view class="pay">
+  <view class="step">
+    <van-steps steps="{{ steps }}" active="{{ 2 }}" />
+  </view>
+  <view class="card info">
+    <view wx:for="{{infoList}}" wx:key="index" class="list">
+      <view class="name">{{item.label}} ：</view>
+      <view class="value">{{item.value}}</view>
+    </view>
+  </view>
+  <view class="card order clearfix">
+    <view class="h2 title">
+      体检套餐
+    </view>
+    <view wx:for="{{10}}" class="item">
+      <view>ZXX-男-体检分类套餐</view>
+    </view>
+  </view>
+  <view class="card add-order clearfix">
+    <view class="h2 title">
+      加项详情
+    </view>
+    <view wx:for="{{3}}" class="item clearfix">
+      <view class="fl">乙肝检查</view>
+      <view class="fr">￥12.36</view>
+    </view>
+  </view>
+  <view class="card money clearfix">
+    <view class="h2 title">
+      商品金额
+    </view>
+    <view class="fr price">￥12.36</view>
+  </view>
+
+  <view class="refund">
+    <van-button plain type="primary" size="large">确定支付</van-button>
+  </view>
+</view>

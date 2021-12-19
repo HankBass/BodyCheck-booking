@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/booking/pay/pay",
+    "pages/booking/addPage/index",
     "pages/booking/selectTime/selectTime",
     "pages/booking/packageDetail/packageDetail",
     "pages/index/index",
-    "pages/booking/addPage/index",
     "pages/list/index",
     "pages/detail/index",
     "pages/my/index",
