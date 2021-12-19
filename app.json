@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/booking/selectTime/selectTime",
     "pages/booking/packageDetail/packageDetail",
-    "pages/booking/addPage/index",
     "pages/index/index",
+    "pages/booking/addPage/index",
     "pages/list/index",
     "pages/detail/index",
     "pages/my/index",
@@ -21,14 +22,12 @@
     "list": [
       {
         "selectedIconPath": "images/home_2.png",
-        "selectedColor": "#2f7a0e",
         "iconPath": "images/home_1.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
         "selectedIconPath": "images/my_2.png",
-        "selectedColor": "#2f7a0e",
         "iconPath": "images/my_1.png",
         "pagePath": "pages/my/index",
         "text": "我的"

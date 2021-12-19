@@ -1,0 +1,29 @@
+<!--pages/booking/selectTime/selectTime.wxml-->
+<view>
+  <view class="step">
+    <van-steps steps="{{ steps }}" active="{{ 0 }}" />
+  </view>
+  <van-cell-group>
+    
+    <van-field model:value="{{ time }}" label="预约时间" placeholder="请选择预约时间" use-button-slot required custom-style="display:block;" readonly>
+      <van-button slot="button" size="small" type="primary" bind:click="handleTime">
+        选择
+      </van-button>
+    </van-field>
+    <van-field model:value="{{ address }}" label="预约地址" required custom-style="display:block;" placeholder="请输入预约地址" />
+  </van-cell-group>
+  <view class="btn">
+    <van-button plain hairline type="primary">下一步</van-button>
+  </view>
+  
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-datetime-picker
+      type="date"
+      value="{{ currentDate }}"
+      bind:confirm="onInput"
+      min-date="{{ minDate }}"
+      bind:cancel="oncancel"
+      formatter="{{ formatter }}"
+    />
+  </van-popup>
+</view>

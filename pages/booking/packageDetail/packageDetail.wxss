@@ -1,1 +1,33 @@
 /* pages/booking/packageDetail/packageDetail.wxss */
+.package-detail{
+  padding: 20rpx;
+}
+.title{
+  color: #fff;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  background-color: #07c160;
+}
+.subTitle{
+  line-height: 70rpx;
+}
+.contant{
+  color: #bbb;
+  font-size: 28rpx;
+}
+.fix{
+  display: flex;
+  justify-content: space-between;
+}
+.line{
+  border-bottom: 1px solid #aaa;
+}
+.margin{
+  margin-top: 60rpx;
+}
+.btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}

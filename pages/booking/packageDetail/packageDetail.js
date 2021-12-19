@@ -1,4 +1,5 @@
 // pages/booking/packageDetail/packageDetail.js
+import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -7,7 +8,14 @@ Page({
   data: {
 
   },
-
+  handleTipsClick(){
+    Dialog.alert({
+      message: '弹窗内容',
+      theme: 'round-button',
+    }).then(() => {
+      // on close
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
