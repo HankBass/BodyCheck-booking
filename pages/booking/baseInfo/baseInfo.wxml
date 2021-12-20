@@ -1,4 +1,4 @@
-<!--pages/baseInfo/baseInfo.wxml-->
+<!--pages/booking/baseInfo/baseInfo.wxml-->
 <view>
   <view class="h1 title">
     基本信息

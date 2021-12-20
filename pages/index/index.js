@@ -24,6 +24,13 @@ Page({
       url: '../logs/logs'
     })
   },
+  goPage(e){
+    if(e.currentTarget.dataset.index < 3){
+      wx.navigateTo({
+        url: '../booking/baseInfo/baseInfo'
+      })
+    }
+  },
   onLoad() {
    
   },

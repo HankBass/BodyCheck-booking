@@ -1,4 +1,4 @@
-// pages/baseInfo/baseInfo.js
+// pages/booking/baseInfo/baseInfo.js
 
 Page({
 
@@ -35,11 +35,19 @@ Page({
       return false;
   }
   if (!this.data.phone) {
-      console.log('手机号不能为空')
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: 'none',
+        duration: 1500
+      })
       return false;
   }
   if (!/^1\d{10}$/.test(this.data.phone)) {
-      console.log('手机号格式不正确');
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon: 'none',
+        duration: 1500
+      })
       return false;
   }
 
@@ -91,6 +99,10 @@ Page({
         title: msg,
         icon: 'none',
         duration: 1500
+      })
+    }else{
+      wx.navigateTo({
+        url: '../packageDetail/packageDetail'
       })
     }
   

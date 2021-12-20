@@ -1,16 +1,16 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/booking/baseInfo/baseInfo",
     "pages/booking/pay/pay",
     "pages/booking/addPage/index",
     "pages/booking/selectTime/selectTime",
     "pages/booking/packageDetail/packageDetail",
-    "pages/index/index",
     "pages/list/index",
     "pages/detail/index",
     "pages/my/index",
     "pages/test/index",
-    "pages/logs/logs",
-    "pages/baseInfo/baseInfo"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

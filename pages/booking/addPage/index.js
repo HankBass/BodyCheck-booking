@@ -40,6 +40,18 @@ Page({
       activeNames: event.detail,
     });
   },
+  goPage(e){
+    if(e.currentTarget.dataset.index === "0"){
+      wx.navigateTo({
+        url: '../selectTime/selectTime'
+      })
+    }else{
+      wx.navigateTo({
+        url: '../pay/pay'
+      })
+    }
+    
+  },
   /**
    * 生命周期函数--监听页面加载
    */

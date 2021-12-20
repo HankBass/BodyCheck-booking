@@ -13,7 +13,7 @@
     <view class="h2 title">
       体检套餐
     </view>
-    <view wx:for="{{10}}" class="item">
+    <view wx:for="{{10}}" class="item" wx:key="*this">
       <view>ZXX-男-体检分类套餐</view>
     </view>
   </view>
@@ -21,7 +21,7 @@
     <view class="h2 title">
       加项详情
     </view>
-    <view wx:for="{{3}}" class="item clearfix">
+    <view wx:for="{{3}}" class="item clearfix" wx:key="*this">
       <view class="fl">乙肝检查</view>
       <view class="fr">￥12.36</view>
     </view>

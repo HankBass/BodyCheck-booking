@@ -26,7 +26,7 @@
    
   </view>
   <view class="btn">
-    <van-button plain hairline type="primary">选择时间</van-button>
+    <van-button plain hairline type="primary" bindtap="goPage">选择时间</van-button>
   </view>
   <van-dialog id="van-dialog" />
 </view>

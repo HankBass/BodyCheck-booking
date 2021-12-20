@@ -14,7 +14,7 @@
     <view class="h2">我要体检</view>
     <view class="ul">
       <block wx:for="{{list}}" wx:key="*this">
-        <view class="li {{item.image}}">
+        <view class="li {{item.image}}" bindtap="goPage" data-index="{{index}}">
           <view class="h2 text-align-center">{{item.title1}}</view>
           <view class="h3 text-align-center">{{item.title2}}</view>
         </view>

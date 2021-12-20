@@ -1,9 +1,0 @@
-/* pages/baseInfo/baseInfo.wxss */
-.title{
-  margin-left:32rpx;
-}
-.btn{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}

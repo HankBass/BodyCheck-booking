@@ -28,8 +28,8 @@
   </view>
   <view class="one"></view>
   <view class="btns">
-    <van-button plain type="primary">上一步</van-button>
-    <van-button plain type="primary">下一步</van-button>
+    <van-button plain type="primary" bind:click="goPage" data-index="0">上一步</van-button>
+    <van-button plain type="primary" bind:click="goPage" data-index="1">下一步</van-button>
   </view>
 
   <van-dialog id="van-dialog" />
