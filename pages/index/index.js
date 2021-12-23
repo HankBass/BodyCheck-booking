@@ -15,7 +15,7 @@ Page({
     vertical: false,
     autoplay: true,
     interval: 2000,
-    duration: 500
+    duration: 3000
   },
  
   // 事件处理函数

@@ -1,6 +1,11 @@
 // pages/booking/packageDetail/packageDetail.js
 import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
-Page({
+import http from "../../../assets/js/http"
+// 可选导入的包
+import common from "../../../assets/js/common.js"
+import utils from "../../../assets/js/utils"
+import requestApi from "../../../assets/js/requestApi.js"
+Page(Object.assign({}, http, utils, common, {
 
   /**
    * 页面的初始数据
@@ -8,7 +13,7 @@ Page({
   data: {
 
   },
-  handleTipsClick(){
+  handleTipsClick() {
     Dialog.alert({
       message: '弹窗内容',
       theme: 'round-button',
@@ -16,16 +21,26 @@ Page({
       // on close
     });
   },
-  goPage(){
+  goPage() {
     wx.navigateTo({
       url: '../selectTime/selectTime'
+    })
+  },
+  initComboData(age,gender) {
+    http.get(requestApi.comboList, {
+      ageSection: age,
+      gender: gender,
+      projectType: 0, // 基础套餐
+    }).then(res =>{
+
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const {age , sex} = options 
+    this.initComboData(age , sex)
   },
 
   /**
@@ -76,4 +91,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}))

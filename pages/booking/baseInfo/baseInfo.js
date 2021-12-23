@@ -1,84 +1,87 @@
 // pages/booking/baseInfo/baseInfo.js
-
-Page({
-
+import http from "../../../assets/js/http"
+// 可选导入的包
+import common from "../../../assets/js/common.js"
+import utils from "../../../assets/js/utils"
+import requestApi from "../../../assets/js/requestApi.js"
+Page(Object.assign({}, http, utils, common, {
   /**
    * 页面的初始数据
    */
   data: {
-    type:"身份证",
-    typeNum:"",
-    username:"",
-    phone:"",
-    sms:"",
-    status:"发送验证码",
-    disabled:false,
+    type: "身份证",
+    typeNum: "",
+    username: "",
+    phone: "",
+    sms: "",
+    status: "发送验证码",
+    disabled: false,
     waitTimer: false,
-    errorMsg:{
-      typeNum:"证件号码不能为空",
-      username:"姓名不能为空",
-      phone:"手机号码不能为空",
-      sms:"验证码不能为空",
+    errorMsg: {
+      typeNum: "证件号码不能为空",
+      username: "姓名不能为空",
+      phone: "手机号码不能为空",
+      sms: "验证码不能为空",
     }
   },
   // 获取用户手机号
-  getPhoneNumber (e) {
-    console.log(999999,e)
+  getPhoneNumber(e) {
+    console.log(999999, e)
     console.log(e.detail.code)
     this.setData({
-      phone:e.detail.code
+      phone: e.detail.code
     })
   },
   // 发送验证码
-  send(){
+  send() {
     if (this.data.waitTimer > 0) {
       return false;
-  }
-  if (!this.data.phone) {
+    }
+    if (!this.data.phone) {
       wx.showToast({
         title: '手机号不能为空',
         icon: 'none',
         duration: 1500
       })
       return false;
-  }
-  if (!/^1\d{10}$/.test(this.data.phone)) {
+    }
+    if (!/^1\d{10}$/.test(this.data.phone)) {
       wx.showToast({
         title: '手机号格式不正确',
         icon: 'none',
         duration: 1500
       })
       return false;
-  }
+    }
 
-  this.data.waitTimer = 59;
-  let that = this;
-  let timerInterval = setInterval(function () {
+    this.data.waitTimer = 59;
+    let that = this;
+    let timerInterval = setInterval(function () {
       if (that.data.waitTimer > 0) {
-          that.setData({
-            status:that.data.waitTimer + 's后获取',
-            disabled:true
-          })
-          that.data.waitTimer--
+        that.setData({
+          status: that.data.waitTimer + 's后获取',
+          disabled: true
+        })
+        that.data.waitTimer--
       } else if (that.data.waitTimer === 0) {
-          that.setData({
-            status:'重新获取',
-            disabled:false,
-          })
-          clearInterval(timerInterval);
+        that.setData({
+          status: '重新获取',
+          disabled: false,
+        })
+        clearInterval(timerInterval);
       } else if (that.data.waitTimer) {
-          that.setData({
-            status:'获取验证码',
-            disabled:true
-          })
-          clearInterval(timerInterval);
+        that.setData({
+          status: '获取验证码',
+          disabled: true
+        })
+        clearInterval(timerInterval);
       }
-  }, 1000);
+    }, 1000);
   },
   // 提交
-  submit(){
+  submit() {
     let msg = ""
-    switch(""){
+    switch ("") {
       case this.data.username:
         msg = this.data.errorMsg['username']
         break;
@@ -94,18 +97,26 @@ Page({
       default:
         break;
     }
-    if(msg){
+    if (msg) {
       wx.showToast({
         title: msg,
         icon: 'none',
         duration: 1500
       })
-    }else{
+    } else {
+      const age = utils.getAge(this.data.typeNum)
+      const sex = utils.getSex(this.data.typeNum)
+      http.post(requestApi.login, {
+        "code": "1234",
+        "phone": "15625560668"
+      }).then((res) =>{
+
+      })
       wx.navigateTo({
-        url: '../packageDetail/packageDetail'
+        url: `../packageDetail/packageDetail?age=${age}&sex=${sex.val}`
       })
     }
-  
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -162,4 +173,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}))
