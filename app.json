@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/booking/baseInfo/baseInfo",
+    "pages/index/index",
     "pages/booking/pay/pay",
     "pages/booking/addPage/index",
     "pages/booking/selectTime/selectTime",
