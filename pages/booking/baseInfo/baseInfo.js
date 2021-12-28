@@ -122,7 +122,8 @@ Page(Object.assign({}, http, utils, common, {
       }).then((res) =>{
         if(res.data.code == 200){
           this.bookingNow(age,sex)
-          
+          wx.setStorageSync('token', res.data.result.token)
+          wx.setStorageSync('userCode', res.data.result.userCode)
         }else{
           wx.showToast({
             title: res.data.message,

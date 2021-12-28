@@ -12,10 +12,10 @@ Page({
   data: {
     steps: [
       {
-        text: '选择时间',
+        text: '选择加项',
       },
       {
-        text: '选择加项',
+        text: '选择时间',
       },
       {
         text: '确认信息',
@@ -62,40 +62,47 @@ Page({
   },
   oncancel(){
     this.setData({
-      shouw:false
+      show:false
     })
   },
-  goPage(){
-    let msg = ""
-    switch ("") {
-      case this.data.time:
-        msg = this.data.errorMsg['time']
-        break;
-      case this.data.address:
-        msg = this.data.errorMsg['address']
-        break;
-      default:
-        break;
-    }
-    if(msg) return
-    http.post(requestApi.check,{dateStr:this.timer(this.data.currentDate,"")}).then((res) =>{
-      console.log(9999,res)
-      if(res.data.code == 200){
-        wx.navigateTo({
-          url: '../addPage/index'
-        })
-        let bookingData = wx.getStorageSync("bookingData")
-        bookingData.address = address
-        bookingData.time = time
-        wx.setStorageSync("bookingData",bookingData)
-      }else{
-        wx.showToast({
-          title: res.data.message,
-          icon: 'none',
-          duration: 1500
-        })
+  goPage(e){
+     if(e.currentTarget.dataset.index === "0"){
+      wx.navigateTo({
+        url: '../addPage/index'
+      })
+    }else{
+      let msg = ""
+      switch ("") {
+        case this.data.time:
+          msg = this.data.errorMsg['time']
+          break;
+        case this.data.address:
+          msg = this.data.errorMsg['address']
+          break;
+        default:
+          break;
       }
-    })
+      if(msg) return
+      http.post(requestApi.check,{dateStr:this.timer(this.data.currentDate,"")}).then((res) =>{
+        console.log(9999,res)
+        if(res.data.code == 200){
+          wx.navigateTo({
+            url: '../pay/pay'
+          })
+          let bookingData = wx.getStorageSync("bookingData")
+          bookingData.address = this.data.address
+          bookingData.time = this.data.time
+          wx.setStorageSync("bookingData",bookingData)
+        }else{
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1500
+          })
+        }
+      })
+    }
+   
     
   },
   /**

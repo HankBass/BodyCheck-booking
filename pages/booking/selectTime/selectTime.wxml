@@ -1,7 +1,7 @@
 <!--pages/booking/selectTime/selectTime.wxml-->
 <view>
   <view class="step">
-    <van-steps steps="{{ steps }}" active="{{ 0 }}" />
+    <van-steps steps="{{ steps }}" active="{{ 1 }}" />
   </view>
   <van-cell-group>
     
@@ -13,7 +13,8 @@
     <van-field model:value="{{ address }}" label="预约地址" required custom-style="display:block;" placeholder="请输入预约地址" />
   </van-cell-group>
   <view class="btn">
-    <van-button plain hairline type="primary" bind:click="goPage">下一步</van-button>
+    <van-button plain type="primary" bind:click="goPage" data-index="0">上一步</van-button>
+    <van-button plain hairline type="primary" bind:click="goPage" data-index="1">下一步</van-button>
   </view>
   
   <van-popup show="{{ show }}" bind:close="onClose" position="bottom">

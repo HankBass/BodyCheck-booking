@@ -18,8 +18,8 @@ export default {
   /**
    * 用户预约
    */
-  order:"/user-order/",
-  check:"/user-order/check",
-  sendCode:"/user-order/code",
-  placeOrder:"/user-order/place",
+  order:"/user-order/",// 我的订单、用于预约体检
+  check:"/user-order/check",// 检查预约时间是否可用
+  sendCode:"/user-order/code",// 验证码发送
+  placeOrder:"/user-order/place",// 下单购买
 }

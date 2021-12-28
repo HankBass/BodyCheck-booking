@@ -1,7 +1,7 @@
 <!--pages/booking/addPage/index.wxml-->
 <view>
   <view class="step">
-    <van-steps steps="{{ steps }}" active="{{ 1 }}" />
+    <van-steps steps="{{ steps }}" active="{{ 0 }}" />
   </view>
   <view class="tips">
     <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" text="您可根据自身需求，自愿选择加项" />
@@ -50,8 +50,8 @@
     </van-collapse>
   </view>
   <view class="btns">
-    <van-button plain type="primary" bind:click="goPage" data-index="0">上一步</van-button>
-    <van-button plain type="primary" bind:click="goPage" data-index="1">下一步</van-button>
+    
+    <van-button plain type="primary" bind:click="goPage" >下一步</van-button>
   </view>
 
   <van-dialog id="van-dialog" />
