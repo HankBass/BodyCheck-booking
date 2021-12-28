@@ -13,7 +13,7 @@
     套餐详情
   </view>
   <view>
-    <block wx:for="{{result}}" wx:key="*this">
+    <block wx:for="{{result[0]['bcPackageOptionMessageList']}}" wx:key="*this">
       <view class="fix">
       <view class="subTitle">{{item.name}}</view>
       <van-icon name="info" size="36rpx" bindtap="handleTipsClick" />
@@ -26,7 +26,7 @@
    
   </view>
   <view class="btn">
-    <van-button plain hairline type="primary" bindtap="goPage">选择时间</van-button>
+    <van-button plain hairline type="primary" bindtap="goPage">选择加项</van-button>
   </view>
   <van-dialog id="van-dialog" />
 </view>

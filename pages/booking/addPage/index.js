@@ -18,10 +18,10 @@ Page({
     result:[],
     steps: [
       {
-        text: '选择时间',
+        text: '选择加项',
       },
       {
-        text: '选择加项',
+        text: '选择时间',
       },
       {
         text: '确认信息',
@@ -51,18 +51,11 @@ Page({
     });
   },
   goPage(e){
-    if(e.currentTarget.dataset.index === "0"){
+   
       wx.navigateTo({
         url: '../selectTime/selectTime'
       })
-    }else{
-      http.get(requestApi.placeOrder,{}).then(res=>{
-        
-      })
-      wx.navigateTo({
-        url: '../pay/pay'
-      })
-    }
+    
     
   },
   /**
@@ -79,14 +72,17 @@ Page({
     if(arr.length > 0){
       let optionalPackages = []
       let totalPrice = 0
+      let optionalPackagesNum = []
       arr.forEach(element => {
         optionalPackages.push(this.data.list[element])
         totalPrice += this.data.list[element].discountPrice
+        optionalPackagesNum.push(this.data.list[element].num)
       })
       console.log(678,optionalPackages)
       let bookingData = wx.getStorageSync("bookingData")
       bookingData.optionalPackages = optionalPackages
       bookingData.totalPrice = totalPrice
+      bookingData.optionalPackagesNum = optionalPackagesNum
       wx.setStorageSync("bookingData",bookingData)
       console.log(8888,wx.getStorageSync("bookingData"))
     }
@@ -104,14 +100,17 @@ Page({
    if(arr.length > 0){
      let singleList = []
      let totalPrice = 0
+     let singleListNum = []
      arr.forEach(element => {
        singleList.push(this.data.singleList[element])
+       singleListNum.push(this.data.singleList[element].num)
        totalPrice += this.data.singleList[element].discountPrice
      })
      console.log(678,singleList)
      let bookingData = wx.getStorageSync("bookingData")
      bookingData.singleList = singleList
      bookingData.singleTotalPrice = totalPrice
+     bookingData.singleListNum = singleListNum
      wx.setStorageSync("bookingData",bookingData)
      console.log(8888,wx.getStorageSync("bookingData"))
    }
@@ -125,6 +124,13 @@ Page({
    */
   onLoad: function (options) {
     let bookingData = wx.getStorageSync("bookingData")
+     bookingData.singleList = []
+     bookingData.singleTotalPrice = 0
+     bookingData.singleListNum = []
+     bookingData.optionalPackages = []
+     bookingData.totalPrice = 0
+     bookingData.optionalPackagesNum = []
+    wx.setStorageSync('bookingData', bookingData)
     let {ageSection,gender} = bookingData
     // 获取自选套餐
     this.getDatas(requestApi.optionalPackage,{ageSection,

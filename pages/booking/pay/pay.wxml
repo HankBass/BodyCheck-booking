@@ -28,8 +28,9 @@
     <view class="h2 title">
       体检套餐
     </view>
-    <view  class="item" >
-      <view>{{infoList.basePackageName}}</view>
+    <view  class="item clearfix" >
+      <view class="fl">{{infoList.basePackageName}}</view>
+      <view class="fr">￥{{infoList.basePackageDiscountPrice}}</view>
     </view>
   </view>
   <view class="card add-order clearfix">
@@ -49,10 +50,10 @@
     <view class="h2 title">
       商品金额
     </view>
-    <view class="fr price">￥{{infoList.totalPrice + infoList.singleTotalPrice}}</view>
+    <view class="fr price">￥{{totalPrice}}</view>
   </view>
 
   <view class="refund">
-    <van-button plain type="primary" size="large">确定支付</van-button>
+    <van-button plain type="primary" size="large" bind:click="pay">确定支付</van-button>
   </view>
 </view>

@@ -23,7 +23,7 @@ Page(Object.assign({}, http, utils, common, {
   },
   goPage() {
     wx.navigateTo({
-      url: '../selectTime/selectTime'
+      url: '../addPage/index'
     })
   },
   initComboData(age,gender,projectType) {
@@ -35,7 +35,7 @@ Page(Object.assign({}, http, utils, common, {
     }else if(age >= 50){
       ageSection = 2
     }
-    http.get(requestApi.comboList, {
+    http.get(requestApi.optionalPackage, {
       ageSection,
       gender,
       projectType, // 基础套餐
@@ -48,7 +48,8 @@ Page(Object.assign({}, http, utils, common, {
         let bookingData = wx.getStorageSync("bookingData")
         bookingData.ageSection = ageSection
         bookingData.gender = gender
-        bookingData.basePackageName = this.data.result.name
+        bookingData.basePackageName = this.data.result[0].numName
+        bookingData.basePackageDiscountPrice = this.data.result[0].discountPrice
         wx.setStorageSync("bookingData",bookingData)
       }
     })
