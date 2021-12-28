@@ -1,5 +1,10 @@
 // pages/booking/addPage/index.js
 import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import http from "../../../assets/js/http"
+// 可选导入的包
+import common from "../../../assets/js/common.js"
+import utils from "../../../assets/js/utils"
+import requestApi from "../../../assets/js/requestApi.js"
 Page({
 
   /**
@@ -7,7 +12,10 @@ Page({
    */
   data: {
     checked: true,
-    list: ['a', 'b', 'c'],
+    list: [],
+    singleList:[],
+    singleResult:[],
+    result:[],
     steps: [
       {
         text: '选择时间',
@@ -27,9 +35,11 @@ Page({
     const checkbox = this.selectComponent(`.checkboxes-${index}`);
     checkbox.toggle();
   },
-  handleTipsClick(){
+  handleTipsClick(data){
+    console.log("77777",data.currentTarget.dataset.mean)
     Dialog.alert({
-      message: '弹窗内容',
+      // message: data.currentTarget.dataset.mean,
+      message: "临床意义",
       theme: 'round-button',
     }).then(() => {
       // on close
@@ -46,6 +56,9 @@ Page({
         url: '../selectTime/selectTime'
       })
     }else{
+      http.get(requestApi.placeOrder,{}).then(res=>{
+        
+      })
       wx.navigateTo({
         url: '../pay/pay'
       })
@@ -53,12 +66,94 @@ Page({
     
   },
   /**
+   * 选择自选套餐
+   * @param {*} options 
+   */
+  noop1(data){
+    console.log(66666,data)
+    let arr = data.detail
+    this.setData({
+      result: arr
+    })
+    console.log(555,arr)
+    if(arr.length > 0){
+      let optionalPackages = []
+      let totalPrice = 0
+      arr.forEach(element => {
+        optionalPackages.push(this.data.list[element])
+        totalPrice += this.data.list[element].discountPrice
+      })
+      console.log(678,optionalPackages)
+      let bookingData = wx.getStorageSync("bookingData")
+      bookingData.optionalPackages = optionalPackages
+      bookingData.totalPrice = totalPrice
+      wx.setStorageSync("bookingData",bookingData)
+      console.log(8888,wx.getStorageSync("bookingData"))
+    }
+  },
+  /* 选择自选单选项目
+  * @param {*} options 
+  */
+ noop2(data){
+   console.log(676767,data)
+   let arr = data.detail
+   this.setData({
+    singleResult: arr
+   })
+   console.log(555,arr)
+   if(arr.length > 0){
+     let singleList = []
+     let totalPrice = 0
+     arr.forEach(element => {
+       singleList.push(this.data.singleList[element])
+       totalPrice += this.data.singleList[element].discountPrice
+     })
+     console.log(678,singleList)
+     let bookingData = wx.getStorageSync("bookingData")
+     bookingData.singleList = singleList
+     bookingData.singleTotalPrice = totalPrice
+     wx.setStorageSync("bookingData",bookingData)
+     console.log(8888,wx.getStorageSync("bookingData"))
+   }
+ },
+  /**
+   * 获取自选套餐项目
+   * @param {*} options 
+   */
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let bookingData = wx.getStorageSync("bookingData")
+    let {ageSection,gender} = bookingData
+    // 获取自选套餐
+    this.getDatas(requestApi.optionalPackage,{ageSection,
+      gender,
+      projectType: 1},(res)=>{
+        this.setData({
+          list: res.data.result
+        })
+      })
+    // 获取自选单项
+    this.getDatas(requestApi.comboList,{ageSection:3,
+      gender:2,
+      projectType: 2},(res)=>{
+        this.setData({
+          singleList: res.data.result
+        })
+      })
   },
-
+  /**
+   * 获取数据
+   */
+  getDatas(url,options,callback){
+    http.get(url, options).then(res =>{
+      console.log(77777999,res)
+      if(res.data.code == 200){
+        callback(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

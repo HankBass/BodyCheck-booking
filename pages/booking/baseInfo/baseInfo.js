@@ -24,14 +24,6 @@ Page(Object.assign({}, http, utils, common, {
       sms: "验证码不能为空",
     }
   },
-  // 获取用户手机号
-  getPhoneNumber(e) {
-    console.log(999999, e)
-    console.log(e.detail.code)
-    this.setData({
-      phone: e.detail.code
-    })
-  },
   // 发送验证码
   send() {
     if (this.data.waitTimer > 0) {
@@ -77,6 +69,24 @@ Page(Object.assign({}, http, utils, common, {
         clearInterval(timerInterval);
       }
     }, 1000);
+    
+    this.sendCode()
+  },
+  sendCode(){
+    http.post(requestApi.sendCode,{phone: this.data.phone}).then(res=>{
+      if(res.data.code == 200){
+        this.setData({
+          sms: res.data.result
+        })
+      }else{
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1500
+        })
+      }
+      
+    })
   },
   // 提交
   submit() {
@@ -107,16 +117,50 @@ Page(Object.assign({}, http, utils, common, {
       const age = utils.getAge(this.data.typeNum)
       const sex = utils.getSex(this.data.typeNum)
       http.post(requestApi.login, {
-        "code": "1234",
-        "phone": "15625560668"
+        "code": this.data.sms,
+        "phone": this.data.phone
       }).then((res) =>{
-
+        if(res.data.code == 200){
+          this.bookingNow(age,sex)
+          
+        }else{
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1500
+          })
+        }
       })
-      wx.navigateTo({
-        url: `../packageDetail/packageDetail?age=${age}&sex=${sex.val}`
-      })
+     
     }
 
+  },
+  /**
+   * 立即预约
+   * @param {*} options 
+   */
+  bookingNow(age,sex){
+    http.post(requestApi.order,{
+      "cardNo": this.data.typeNum,
+      "code": this.data.sms,
+      "name": this.data.username,
+      "phone": this.data.phone}).then(res=>{
+        if(res.data.code == 200){
+          wx.navigateTo({
+            url: `../packageDetail/packageDetail?age=${age}&gender=${sex.val}&projectType=0`
+          })
+          wx.setStorageSync("bookingData",{
+            "cardNo": this.data.typeNum,
+            "name": this.data.username,
+            "phone": this.data.phone})
+        }else{
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1500
+          })
+        }
+      })
   },
   /**
    * 生命周期函数--监听页面加载

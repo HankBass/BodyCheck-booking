@@ -1,4 +1,9 @@
 // pages/booking/selectTime/selectTime.js
+import http from "../../../assets/js/http"
+// 可选导入的包
+import common from "../../../assets/js/common.js"
+import utils from "../../../assets/js/utils"
+import requestApi from "../../../assets/js/requestApi.js"
 Page({
 
   /**
@@ -18,6 +23,7 @@ Page({
     ],
     time:"",
     address:"",
+    errorMsg:{time:"请选择预约时间",address:"请输入预约地址"},
     currentDate: new Date().getTime(),
     minDate: new Date().getTime(),
     formatter(type, value) {
@@ -30,11 +36,12 @@ Page({
       return value;
     },
     show: false,
+   
   },
   onInput(event) {
     this.setData({
       currentDate: event.detail,
-      time: this.timer(event.detail),
+      time: this.timer(event.detail,"-"),
       show:false
     });
   },
@@ -48,9 +55,9 @@ Page({
       show:false
     })
   },
-  timer(timestamp){ 
+  timer(timestamp,singe){ 
     let d = new Date(timestamp);    
-    let date = (d.getFullYear()) + "-" + (d.getMonth() + 1) + "-" +(d.getDate())
+    let date = (d.getFullYear()) + singe + (d.getMonth() + 1) + singe +(d.getDate())
     return date
   },
   oncancel(){
@@ -59,14 +66,43 @@ Page({
     })
   },
   goPage(){
-    wx.navigateTo({
-      url: '../addPage/index'
+    let msg = ""
+    switch ("") {
+      case this.data.time:
+        msg = this.data.errorMsg['time']
+        break;
+      case this.data.address:
+        msg = this.data.errorMsg['address']
+        break;
+      default:
+        break;
+    }
+    if(msg) return
+    http.post(requestApi.check,{dateStr:this.timer(this.data.currentDate,"")}).then((res) =>{
+      console.log(9999,res)
+      if(res.data.code == 200){
+        wx.navigateTo({
+          url: '../addPage/index'
+        })
+        let bookingData = wx.getStorageSync("bookingData")
+        bookingData.address = address
+        bookingData.time = time
+        wx.setStorageSync("bookingData",bookingData)
+      }else{
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1500
+        })
+      }
     })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
 
   },
 

@@ -20,5 +20,6 @@ export default {
    */
   order:"/user-order/",
   check:"/user-order/check",
-  sendCode:"/user-order/code"
+  sendCode:"/user-order/code",
+  placeOrder:"/user-order/place",
 }

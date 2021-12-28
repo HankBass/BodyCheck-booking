@@ -11,7 +11,7 @@ Page(Object.assign({}, http, utils, common, {
    * 页面的初始数据
    */
   data: {
-
+    result:[]
   },
   handleTipsClick() {
     Dialog.alert({
@@ -26,21 +26,40 @@ Page(Object.assign({}, http, utils, common, {
       url: '../selectTime/selectTime'
     })
   },
-  initComboData(age,gender) {
+  initComboData(age,gender,projectType) {
+    let ageSection = null
+    if(age < 40){
+      ageSection = 0
+    }else if(age >= 40 || age < 50){
+      ageSection = 1
+    }else if(age >= 50){
+      ageSection = 2
+    }
     http.get(requestApi.comboList, {
-      ageSection: age,
-      gender: gender,
-      projectType: 0, // 基础套餐
+      ageSection,
+      gender,
+      projectType, // 基础套餐
     }).then(res =>{
-
+      console.log(77777,res)
+      if(res.data.code == 200){
+        this.setData({
+          result : res.data.result
+        })
+        let bookingData = wx.getStorageSync("bookingData")
+        bookingData.ageSection = ageSection
+        bookingData.gender = gender
+        bookingData.basePackageName = this.data.result.name
+        wx.setStorageSync("bookingData",bookingData)
+      }
     })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const {age , sex} = options 
-    this.initComboData(age , sex)
+    const {age , gender,projectType} = options
+    this.initComboData(age , gender, projectType)
   },
 
   /**

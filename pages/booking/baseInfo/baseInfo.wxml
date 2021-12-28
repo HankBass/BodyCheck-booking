@@ -5,10 +5,7 @@
   </view>
   <van-cell-group>
     <van-field model:value="{{ username }}" label="姓名" placeholder="请输入您的姓名" required custom-style="display:block;" />
-    <van-field model:value="{{ phone }}" label="手机号码" placeholder="请输入您的手机号码" use-button-slot required custom-style="display:block;" >
-      <van-button slot="button" size="small" type="primary" bind:getphonenumber="getPhoneNumber" open-type="getPhoneNumber">
-        选择
-      </van-button>
+    <van-field model:value="{{ phone }}" label="手机号码" placeholder="请输入您的手机号码"  required custom-style="display:block;" >
     </van-field>
     <van-field model:value="{{ sms }}" center clearable label="验证码" placeholder="请输入您的手机号验证码" use-button-slot required custom-style="display:block;">
       <van-button slot="button" size="small" type="primary" disabled="{{disabled}}" bind:click="send">

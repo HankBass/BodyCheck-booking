@@ -1,25 +1,25 @@
 <!--pages/booking/packageDetail/packageDetail.wxml-->
 <view class="package-detail">
-  <view class="title">
+  <!-- <view class="title">
     <van-icon name="label" />
     套餐简介
   </view>
   <view>
-    <view class="subTitle">41-49岁职工自选套餐项目</view>
-    <view class="contant">由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,由各种物质组成的,</view>
-  </view>
+    <view class="subTitle"></view>
+    <view class="contant">{{result.mean}}</view>
+  </view> -->
   <view class="title margin">
     <van-icon name="label" />
     套餐详情
   </view>
   <view>
-    <block wx:for="{{3}}" wx:key="*this">
+    <block wx:for="{{result}}" wx:key="*this">
       <view class="fix">
-      <view class="subTitle">一般检查</view>
+      <view class="subTitle">{{item.name}}</view>
       <van-icon name="info" size="36rpx" bindtap="handleTipsClick" />
     </view>
     <view class="contant">
-    身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、身高体重、、、、、、
+      {{item.mean}}
     </view>
     <view class="line"></view>
     </block>

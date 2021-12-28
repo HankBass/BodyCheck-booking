@@ -4,33 +4,52 @@
     <van-steps steps="{{ steps }}" active="{{ 2 }}" />
   </view>
   <view class="card info">
-    <view wx:for="{{infoList}}" wx:key="index" class="list">
-      <view class="name">{{item.label}} ：</view>
-      <view class="value">{{item.value}}</view>
+    <view  class="list">
+      <view class="name">体检人 ：</view>
+      <view class="value">{{infoList.name}}</view>
+    </view>
+    <view  class="list">
+      <view class="name">手机号 ：</view>
+      <view class="value">{{infoList.phone}}</view>
+    </view>
+    <view  class="list">
+      <view class="name">身份证号 ：</view>
+      <view class="value">{{infoList.cardNo}}</view>
+    </view>
+    <view  class="list">
+      <view class="name">预约时间 ：</view>
+      <view class="value">{{infoList.time}}</view>
+    </view><view  class="list">
+      <view class="name">预约地址 ：</view>
+      <view class="value">{{infoList.address}}</view>
     </view>
   </view>
   <view class="card order clearfix">
     <view class="h2 title">
       体检套餐
     </view>
-    <view wx:for="{{10}}" class="item" wx:key="*this">
-      <view>ZXX-男-体检分类套餐</view>
+    <view  class="item" >
+      <view>{{infoList.basePackageName}}</view>
     </view>
   </view>
   <view class="card add-order clearfix">
     <view class="h2 title">
       加项详情
     </view>
-    <view wx:for="{{3}}" class="item clearfix" wx:key="*this">
-      <view class="fl">乙肝检查</view>
-      <view class="fr">￥12.36</view>
+    <view wx:for="{{infoList.optionalPackages}}" class="item clearfix" wx:key="*this">
+      <view class="fl">{{item.numName}}</view>
+      <view class="fr">￥{{item.discountPrice}}</view>
+    </view>
+    <view wx:for="{{infoList.singleList}}" class="item clearfix" wx:key="*this">
+      <view class="fl">{{item.name}}</view>
+      <view class="fr">￥{{item.discountPrice }}</view>
     </view>
   </view>
   <view class="card money clearfix">
     <view class="h2 title">
       商品金额
     </view>
-    <view class="fr price">￥12.36</view>
+    <view class="fr price">￥{{infoList.totalPrice + infoList.singleTotalPrice}}</view>
   </view>
 
   <view class="refund">
