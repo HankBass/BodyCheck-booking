@@ -67,8 +67,8 @@ Page({
   },
   goPage(e){
      if(e.currentTarget.dataset.index === "0"){
-      wx.navigateTo({
-        url: '../addPage/index'
+      wx.navigateBack({
+        delta: 1
       })
     }else{
       let msg = ""
@@ -82,7 +82,14 @@ Page({
         default:
           break;
       }
-      if(msg) return
+      if(msg){
+        wx.showToast({
+          title: msg,
+          icon: 'none',
+          duration: 1500
+        })
+        return
+      } 
       http.post(requestApi.check,{dateStr:this.timer(this.data.currentDate,"")}).then((res) =>{
         console.log(9999,res)
         if(res.data.code == 200){

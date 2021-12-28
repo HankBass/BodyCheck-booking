@@ -124,6 +124,13 @@ Page({
    */
   onLoad: function (options) {
     let bookingData = wx.getStorageSync("bookingData")
+     bookingData.singleList = []
+     bookingData.singleTotalPrice = 0
+     bookingData.singleListNum = []
+     bookingData.optionalPackages = []
+     bookingData.totalPrice = 0
+     bookingData.optionalPackagesNum = []
+    wx.setStorageSync('bookingData', bookingData)
     let {ageSection,gender} = bookingData
     // 获取自选套餐
     this.getDatas(requestApi.optionalPackage,{ageSection,
