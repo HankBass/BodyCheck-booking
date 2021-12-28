@@ -38,8 +38,8 @@ Page({
     indicatorDots: true,
     vertical: false,
     autoplay: true,
-    interval: 10000,
-    duration: 5000
+    interval: 5000,
+    duration: 2000
   },
 
   // 事件处理函数

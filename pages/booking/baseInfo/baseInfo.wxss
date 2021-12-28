@@ -3,7 +3,7 @@
   margin-left:32rpx;
 }
 .btn{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  padding: 20rpx 30rpx;
+  margin-top: 100px;
+  text-align: center;
 }

@@ -25,6 +25,12 @@
   line-height: 60rpx;
   background-color: rgb(126,121,121,.5);
 }
+
+.h3.text-align-center{
+  font-size: 30rpx;
+  line-height: 60rpx;
+  background-color: rgb(126,121,121,.5);
+}
 .demo-text-1{
   /* background:url(http://www.gdmuah.com/images/banner.jpg); */
   background-size:100% 100%;

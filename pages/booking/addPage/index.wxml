@@ -6,23 +6,26 @@
   <view class="tips">
     <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" text="您可根据自身需求，自愿选择加项" />
   </view>
-  <view class="combo"  wx:if="{{list.length > 0}}">
+  <view class="combo" wx:if="{{list.length > 0}}">
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item title="自选套餐项目" name="1">
         <van-checkbox-group value="{{ result }}" bind:change="noop1">
-        <view class="item" wx:for="{{ list }}" wx:key="index">
-          <van-checkbox shape="square"  class="checkboxes-{{ index }}" name="{{ index }}"  />
-          <view class="name">
-            <view class="text">{{item.numName}}</view>
-            <van-icon name="info" size="36rpx" bindtap="handleTipsClick" data-mean="{{item.bcPackageOptionMessageList}}"/>
+          <view class="item" wx:for="{{ list }}" wx:key="index">
+            <view class="item-wrap">
+              <van-checkbox shape="square" class="checkboxes-{{ index }}" name="{{ index }}" />
+              <view class="name">
+                <view class="text">{{item.numName}}</view>
+                <van-icon name="info" size="36rpx" bindtap="handleTipsClick" data-mean="{{item.bcPackageOptionMessageList}}" />
+              </view>
+            </view>
+
+            <view class="price">
+              <view class="discount">￥{{item.discountPrice}}</view>
+              <text class="line">|</text>
+              <view class="origin">￥{{item.allPrice}}</view>
+            </view>
           </view>
-          <view class="price">
-            <view class="discount">￥{{item.discountPrice}}</view>
-            <text class="line">|</text>
-            <view class="origin">￥{{item.allPrice}}</view>
-          </view>
-        </view>
-      </van-checkbox-group>
+        </van-checkbox-group>
       </van-collapse-item>
 
     </van-collapse>
@@ -32,26 +35,29 @@
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item title="自选单项项目" name="2">
         <van-checkbox-group value="{{ singleResult }}" bind:change="noop2">
-        <view class="item" wx:for="{{ singleList }}" wx:key="index">
-          <van-checkbox shape="square"  class="checkboxes-{{ index }}" name="{{ index }}"  />
-          <view class="name">
-            <view class="text">{{item.name}}</view>
-            <van-icon name="info" size="36rpx" bindtap="handleTipsClick" data-mean="{{item.mean}}"/>
+          <view class="item" wx:for="{{ singleList }}" wx:key="index">
+            <view class="item-wrap">
+              <van-checkbox shape="square" class="checkboxes-{{ index }}" name="{{ index }}" />
+              <view class="name">
+                <view class="text">{{item.name}}</view>
+                <van-icon name="info" size="36rpx" bindtap="handleTipsClick" data-mean="{{item.mean}}" />
+              </view>
+            </view>
+
+            <view class="price">
+              <view class="discount">￥{{item.discountPrice}}</view>
+              <text class="line">|</text>
+              <view class="origin">￥{{item.price}}</view>
+            </view>
           </view>
-          <view class="price">
-            <view class="discount">￥{{item.discountPrice}}</view>
-            <text class="line">|</text>
-            <view class="origin">￥{{item.price}}</view>
-          </view>
-        </view>
-      </van-checkbox-group>
+        </van-checkbox-group>
       </van-collapse-item>
 
     </van-collapse>
   </view>
   <view class="btns">
-    
-    <van-button plain type="primary" bind:click="goPage" >下一步</van-button>
+
+    <van-button plain type="primary" bind:click="goPage">下一步</van-button>
   </view>
 
   <van-dialog id="van-dialog" />

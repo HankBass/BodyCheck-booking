@@ -36,10 +36,9 @@ Page({
     checkbox.toggle();
   },
   handleTipsClick(data){
-    console.log("77777",data.currentTarget.dataset.mean)
+    const { mean } = data.currentTarget.dataset 
     Dialog.alert({
-      // message: data.currentTarget.dataset.mean,
-      message: "临床意义",
+      message: mean || '暂无描述',
       theme: 'round-button',
     }).then(() => {
       // on close

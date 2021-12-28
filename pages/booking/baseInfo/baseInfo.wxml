@@ -17,7 +17,7 @@
   </van-cell-group>
 
   <view class="btn">
-    <van-button type="info" block bind:click="submit" >
+    <van-button plain type="primary" size="large" block bind:click="submit" >
     立即预约
     </van-button>
   </view>

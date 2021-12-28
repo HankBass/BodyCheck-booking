@@ -6,21 +6,25 @@
   display: flex;
   align-items: center;
   border-bottom:1px solid #eee ;
+  justify-content: space-between;
+}
+.item-wrap{
+  display: flex;
 }
 .name{
-  flex: 1;
+ display: flex;
+  align-content: flex-start;
 }
 
 .combo .name .text{
   display: inline-block;
   margin-right: 10rpx;
   line-height: 40rpx;
-  text-align: center;
   vertical-align: top;
 }
 .price{
   display: flex;
-  flex: 0 1 340rpx;
+  align-content: flex-end;
 }
 .price .discount {
   font-size: 36rpx;
@@ -36,6 +40,7 @@
   line-height: 50rpx;
   color: #ccc;
   text-decoration: line-through;
+  width: 100rpx;
 }
 .btns{
   width: 100%;

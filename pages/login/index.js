@@ -129,7 +129,7 @@ Page(Object.assign({}, http, utils, common, {
         duration: 1500
       })
     } else {
-      login()
+      this.login()
 
     }
   },

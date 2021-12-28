@@ -4,7 +4,6 @@ import http from "../../../assets/js/http"
 import common from "../../../assets/js/common.js"
 import utils from "../../../assets/js/utils"
 import requestApi from "../../../assets/js/requestApi.js"
-
 Page(Object.assign({}, http, utils, common, {
   /**
    * 页面的初始数据
@@ -122,9 +121,9 @@ Page(Object.assign({}, http, utils, common, {
         "phone": this.data.phone
       }).then((res) =>{
         if(res.data.code == 200){
-          wx.setStorageSync("token",res.data.token)
-          wx.setStorageSync("userCode",res.data.userCode)
           this.bookingNow(age,sex)
+          wx.setStorageSync('token', res.data.result.token)
+          wx.setStorageSync('userCode', res.data.result.userCode)
         }else{
           wx.showToast({
             title: res.data.message,
@@ -151,11 +150,10 @@ Page(Object.assign({}, http, utils, common, {
           wx.navigateTo({
             url: `../packageDetail/packageDetail?age=${age}&gender=${sex.val}&projectType=0`
           })
-          wx.setStorageSync("userData",{
+          wx.setStorageSync("bookingData",{
             "cardNo": this.data.typeNum,
             "name": this.data.username,
             "phone": this.data.phone})
- 
         }else{
           wx.showToast({
             title: res.data.message,
