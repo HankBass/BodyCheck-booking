@@ -1,29 +1,43 @@
-// pages/booking/baseInfo/baseInfo.js
-import http from "../../../assets/js/http"
+import http from "../../assets/js/http"
 // 可选导入的包
-import common from "../../../assets/js/common.js"
-import utils from "../../../assets/js/utils"
-import requestApi from "../../../assets/js/requestApi.js"
+import common from "../../assets/js/common.js"
+import utils from "../../assets/js/utils"
+import requestApi from "../../assets/js/requestApi.js"
 
 Page(Object.assign({}, http, utils, common, {
   /**
    * 页面的初始数据
    */
   data: {
-    type: "身份证",
-    typeNum: "",
-    username: "",
     phone: "",
     sms: "",
+    userType: "",
+    show: false,
     status: "发送验证码",
     disabled: false,
     waitTimer: false,
     errorMsg: {
-      typeNum: "证件号码不能为空",
-      username: "姓名不能为空",
       phone: "手机号码不能为空",
       sms: "验证码不能为空",
-    }
+      userType: "用户类型不能为空",
+    },
+    columns: [{
+        type: 1,
+        text: '在职职工'
+      },
+      {
+        type: 2,
+        text: '退休职工'
+      },
+      {
+        type: 3,
+        text: '职工家属'
+      },
+      {
+        type: 4,
+        text: '管理员'
+      },
+    ],
   },
   // 发送验证码
   send() {
@@ -70,31 +84,33 @@ Page(Object.assign({}, http, utils, common, {
         clearInterval(timerInterval);
       }
     }, 1000);
-    
+
     this.sendCode()
   },
-  sendCode(){
-    http.post(requestApi.sendCode,{phone: this.data.phone}).then(res=>{
-      if(res.data.code == 200){
+  sendCode() {
+    http.post(requestApi.sendCode, {
+      phone: this.data.phone
+    }).then(res => {
+      if (res.data.code == 200) {
         this.setData({
           sms: res.data.result
         })
-      }else{
+      } else {
         wx.showToast({
           title: res.data.message,
           icon: 'none',
           duration: 1500
         })
       }
-      
+
     })
   },
   // 提交
   submit() {
     let msg = ""
     switch ("") {
-      case this.data.username:
-        msg = this.data.errorMsg['username']
+      case this.data.userType:
+        msg = this.data.errorMsg['userType']
         break;
       case this.data.phone:
         msg = this.data.errorMsg['phone']
@@ -102,9 +118,7 @@ Page(Object.assign({}, http, utils, common, {
       case this.data.sms:
         msg = this.data.errorMsg['sms']
         break;
-      case this.data.typeNum:
-        msg = this.data.errorMsg['typeNum']
-        break;
+
       default:
         break;
     }
@@ -115,55 +129,62 @@ Page(Object.assign({}, http, utils, common, {
         duration: 1500
       })
     } else {
-      const age = utils.getAge(this.data.typeNum)
-      const sex = utils.getSex(this.data.typeNum)
-      http.post(requestApi.login, {
-        "code": this.data.sms,
-        "phone": this.data.phone
-      }).then((res) =>{
-        if(res.data.code == 200){
-          wx.setStorageSync("token",res.data.token)
-          wx.setStorageSync("userCode",res.data.userCode)
-          this.bookingNow(age,sex)
-        }else{
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 1500
-          })
-        }
-      })
-     
-    }
+      login()
 
+    }
   },
   /**
    * 立即预约
    * @param {*} options 
    */
-  bookingNow(age,sex){
-    http.post(requestApi.order,{
-      "cardNo": this.data.typeNum,
+  login() {
+    http.post(requestApi.login, {
       "code": this.data.sms,
-      "name": this.data.username,
-      "phone": this.data.phone}).then(res=>{
-        if(res.data.code == 200){
-          wx.navigateTo({
-            url: `../packageDetail/packageDetail?age=${age}&gender=${sex.val}&projectType=0`
-          })
-          wx.setStorageSync("userData",{
-            "cardNo": this.data.typeNum,
-            "name": this.data.username,
-            "phone": this.data.phone})
- 
-        }else{
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 1500
-          })
-        }
-      })
+      "phone": this.data.phone
+    }).then(res => {
+      if (res.data.code == 200) {
+        wx.reLaunch({
+          url: '../my/index'
+        })
+        wx.setStorageSync("token", res.data.result.token)
+        wx.setStorageSync("userCode", res.data.result.userCode)
+        wx.setStorageSync("userData", {
+          "name": this.data.username,
+          "phone": this.data.phone,
+        })
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1500
+        })
+      }
+    })
+  },
+
+  handleChangeUserType() {
+    this.setData({
+      show: true
+    })
+  },
+
+  onCancel() {
+    this.setData({
+      show: false
+    })
+  },
+  onConfirm(event) {
+    const {
+      picker,
+      value,
+      index
+    } = event.detail;
+    this.setData({
+      userType: this.data.columns[index].type,
+      userTypeName: this.data.columns[index].text
+    })
+    this.onCancel()
+
   },
   /**
    * 生命周期函数--监听页面加载

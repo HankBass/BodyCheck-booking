@@ -14,8 +14,6 @@
   line-height: 88prx;
   height: 88rpx;
   padding-top: 20rpx;
-  
-
 }
 
 .title {
@@ -36,7 +34,9 @@
 .order .list .item .icon {
   margin-bottom: 16rpx;
 }
-
+.login{
+  display: inline-block;
+}
 .logout {
   padding: 20rpx 30rpx;
   margin-top: 100px;

@@ -2,7 +2,7 @@
 <view class="list body">
   <van-tabs swipeable sticky active="{{ active }}"  bind:change="onChange">
     <van-tab title="全部" name="all">
-      <view class="card clearfix" wx:for="{{orderList}}" wx:key="index" wx:if="orderList.length" bindtap="handleGoDetail">
+      <view class="card clearfix" wx:for="{{orderList}}" wx:key="index" wx:if="orderList.length" bindtap="handleGoDetail" data-item="{{item}}">
         <view class="title clearfix">
           <view class="text">
             <van-icon name="like" color="red" />

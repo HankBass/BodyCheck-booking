@@ -13,8 +13,8 @@ service.interceptors.request.use(config => {
     mask: true,
     title: '加载中...',
   })
-  if (!utils.isNull(utils.getStorage("ks_token"))) {
-    config.header['token'] = utils.getStorage("ks_token")
+  if (!utils.isNull(utils.getStorage("token"))) {
+    config.header['token'] = utils.getStorage("token")
   }
   return config;
 })

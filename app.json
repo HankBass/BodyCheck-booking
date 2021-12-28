@@ -1,14 +1,15 @@
 {
   "pages": [
-    "pages/booking/baseInfo/baseInfo",
+    "pages/my/index",
+    "pages/login/index",
     "pages/index/index",
+    "pages/booking/baseInfo/baseInfo",
     "pages/booking/pay/pay",
     "pages/booking/addPage/index",
     "pages/booking/selectTime/selectTime",
     "pages/booking/packageDetail/packageDetail",
     "pages/list/index",
     "pages/detail/index",
-    "pages/my/index",
     "pages/test/index",
     "pages/logs/logs"
   ],
@@ -46,6 +47,8 @@
     "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   }
 }

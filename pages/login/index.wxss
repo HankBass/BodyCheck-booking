@@ -1,0 +1,9 @@
+/* pages/login/index.wxss */
+
+.title {
+  margin-left: 32rpx;
+}
+
+.btn {
+  margin: 60rpx;
+}

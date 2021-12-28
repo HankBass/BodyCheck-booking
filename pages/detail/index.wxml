@@ -1,7 +1,7 @@
 <!--pages/detail/index.wxml-->
 <view class="detail body">
   <view class="card info">
-    <view wx:for="{{infoList}}" wx:key="index" class="list">
+    <view wx:for="{{orderDetail}}" wx:key="index" class="list">
       <view class="name">{{item.label}} ：</view>
       <view class="value">{{item.value}}</view>
     </view>

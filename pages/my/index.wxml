@@ -1,14 +1,23 @@
 <!--pages/my.wxml-->
+
 <view class="my">
   <view class="info">
-    <van-row>
+    <van-row wx:if="{{userData.phone}}">
       <van-col span="4">
         <view>
           <van-icon name="manager" size="44px" />
         </view>
       </van-col>
       <van-col span="18">
-        <view class="number">186 **** 6666</view>
+        <view class="number">{{userData.phone}}</view>
+      </van-col>
+
+    </van-row>
+    <van-row wx:else>
+      <van-col span="18">
+        <view class="login">
+          <van-button round plain type="primary" hairline bind:click="login">登录</van-button>
+        </view>
       </van-col>
     </van-row>
   </view>
@@ -27,6 +36,7 @@
     </van-row>
   </view>
   <view class="logout">
-    <van-button plain type="primary" size="large">退出登录</van-button>
+    <van-button plain type="primary" size="large" bindtap="handleLogout">退出登录</van-button>
   </view>
+  <van-dialog id="van-dialog" />
 </view>

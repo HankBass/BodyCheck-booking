@@ -1,24 +1,51 @@
 // pages/detail/index.js
+
+import http from "../../assets/js/http"
+// 可选导入的包
+import common from "../../assets/js/common.js"
+import utils from "../../assets/js/utils"
+import requestApi from "../../assets/js/requestApi.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    infoList:[
-      {name:"name",label:'体检人',value:"张三"},
-      {name:"name",label:'体检人',value:"张三张三张三张三张三张三"},
-      {name:"name",label:'体检人',value:"张三"},
-      {name:"name",label:'体检人',value:"张三"},
-      {name:"name",label:'体检人',value:"张三张三张三张三张三张三张三张三张三张三张三张三张三"},
-    ]
+    orderNum: "",
+    orderDetail: []
   },
+  initOrderDetai() {
 
+
+    const data = {
+      userCode: this.data.userCode,
+      orderNum: this.data.orderNum
+    }
+    console.log('没有？', this.data)
+
+    http.get(requestApi.order, data).then((res) => {
+      if (res.data.code == 200) {
+        this.setData({
+          orderDetail: res.data.result
+        })
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1500
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      orderNum: options.orderNum || '',
+      userCode: options.userCode || ''
+    })
+    this.initOrderDetai()
   },
 
   /**

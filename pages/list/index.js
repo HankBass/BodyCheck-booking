@@ -12,74 +12,50 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:'all',
-    orderList:[
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000",bookingData:{person:"张三",time:"2021-12-06",address:"广东医科大学"}},
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
-      {name:"广东医科大学-男-体检分类套餐A",status:"已预约",price:"1000"},
-    ],
-    orderList: [
-      {
-        "age": 0,
-        "ageSection": 0,
-        "bcPackageOptionVOList": [
-          {
-            "bcPackageOptionMessageList": [
-              {
-                "discountPrice": 0,
-                "mean": "",
-                "name": "",
-                "price": 0
-              }
-            ],
-            "num": "",
-            "numName": "广东医科大学-男-体检分类套餐A",
-            "projectType": 0
-          }
-        ],
-        "cardNo": "",
-        "orderMoney": 1000,
-        "orderNum": "",
-        "orderStatus": 0,
-        "payTime": "",
-        "payType": 0,
-        "phone": "",
-        "price": 0,
-        "refundNum": "",
-        "refundTime": "",
-        "remark": "",
-        "sex": 0,
-        "subscribePlace": "广东医科大学",
-        "subscribeTime": "2021-12-25",
-        "userCode": "",
-        "userName": "xiao"
-      }
-    ],
+    active: 'all',
+    orderList:[],
     // orderStatus:{all:"",toPay:0,toCheck:2,refund:3},
-    orderStatus:{all:"",0:"待付款",1:"已取消",2:"待体检",3:"退款"}
+    orderStatus: {
+      all: "",
+      0: "待付款",
+      1: "已取消",
+      2: "待体检",
+      3: "退款"
+    }
   },
   /**
    * 获取订单数据
    * @param {orderStatus,userCode} options 
    */
-  getOrderData(data){
-    http.get(requestApi.order, data).then((res) =>{
-
+  getOrderData(data) {
+    http.get(requestApi.order, data).then((res) => {
+      if (res.data.code == 200) {
+        this.setData({
+          orderList:res.data.result
+        })
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1500
+        })
+      }
     })
   },
-  onChange(data){
+  onChange(data) {
     this.setData({
-      active:data.detail.name
+      active: data.detail.name
     })
     let options = null
-    if(this.data.active === "all"){
-      options = {userCode: app.globalData.userCode}
-    }else{
-      options = {orderStatus: this.data.active,userCode: app.globalData.userCode}
+    if (this.data.active === "all") {
+      options = {
+        userCode: app.globalData.userCode
+      }
+    } else {
+      options = {
+        orderStatus: this.data.active,
+        userCode: app.globalData.userCode
+      }
     }
     this.getOrderData(options)
   },
@@ -88,13 +64,18 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      active:options.active
+      active: options.active
     })
     let data = null
-    if(this.data.active === "all"){
-      data = {userCode: app.globalData.userCode}
-    }else{
-      data = {orderStatus: this.data.active,userCode: app.globalData.userCode}
+    if (this.data.active === "all") {
+      data = {
+        userCode: app.globalData.userCode
+      }
+    } else {
+      data = {
+        orderStatus: this.data.active,
+        userCode: app.globalData.userCode
+      }
     }
     this.getOrderData(data)
   },
@@ -147,9 +128,20 @@ Page({
   onShareAppMessage: function () {
 
   },
-  handleGoDetail(){
-    wx.navigateTo({
-      url: '../detail/index'
+  handleGoDetail(event) {
+    const { item } = event.currentTarget.dataset;
+    let userCode = null
+    wx.getStorage({
+      key: 'userCode',
+      success(res) {
+        userCode = res.data;
+        console.log('失败了？',res.data)
+        wx.navigateTo({
+          url: `../detail/index?orderNum=${item.orderNum}&userCode=${userCode}`
+        })
+
+      }
     })
+
   }
 })
