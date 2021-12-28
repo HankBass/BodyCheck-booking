@@ -355,7 +355,7 @@ getAge:function(idNo) {
   if (sexNo % 2 === 0) {
     return {
       text: "女",
-      val: "2"
+      val: "0"
     };
   }
   return {

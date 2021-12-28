@@ -55,7 +55,7 @@ export default class Request {
     return this.request('GET', url, data, header);
   }
   post(url, data = {}, header = {
-    'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+    'content-type': 'application/json;charset=utf-8'
   }) {
     return this.request('POST', url, data, header);
   }

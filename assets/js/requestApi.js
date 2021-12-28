@@ -13,6 +13,12 @@ export default {
   /**
    * 体检项目
    */
-  comboList:"/body-check/project" // 获取体检项目
-
+  comboList:"/body-check/project", // 获取体检项目
+  optionalPackage:"/body-check/select-project",// 获取自选套餐
+  /**
+   * 用户预约
+   */
+  order:"/user-order/",
+  check:"/user-order/check",
+  sendCode:"/user-order/code"
 }

@@ -23,6 +23,7 @@
 }
 .h2.text-align-center{
   line-height: 60rpx;
+  background-color: rgb(126,121,121,.5);
 }
 .demo-text-1{
   background:url(http://www.gdmuah.com/images/banner.jpg);

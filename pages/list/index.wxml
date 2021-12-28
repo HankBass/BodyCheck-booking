@@ -1,6 +1,6 @@
 <!--pages/list/index.wxml-->
 <view class="list body">
-  <van-tabs swipeable sticky active="{{ active }}">
+  <van-tabs swipeable sticky active="{{ active }}"  bind:change="onChange">
     <van-tab title="全部" name="all">
       <view class="card clearfix" wx:for="{{orderList}}" wx:key="index" wx:if="orderList.length" bindtap="handleGoDetail">
         <view class="title clearfix">
@@ -8,27 +8,27 @@
             <van-icon name="like" color="red" />
             体检
           </view>
-          <view class="status">{{item.status}}</view>
+          <view class="status">{{orderStatus[item.orderStatus]}}</view>
         </view>
 
-        <view class="name">{{item.name}}</view>
+        <view class="name">{{item.bcPackageOptionVOList[0]["numName"]}}</view>
         <view class="price">
           <text>总费用：</text>
-          <text class="num">{{item.price}}元</text>
+          <text class="num">{{item.orderMoney}}元</text>
         </view>
 
-        <view class="booking-info" wx:if="{{item.bookingData}}">
+        <view class="booking-info">
           <view class="item">
             <text>体检人：</text>
-            <text>{{item.bookingData.person}}</text>
+            <text>{{item.userName}}</text>
           </view>
           <view class="item">
             <text>体检时间：</text>
-            <text>{{item.bookingData.time}}</text>
+            <text>{{item.subscribeTime}}</text>
           </view>
           <view class="item">
             <text>体检地点：</text>
-            <text>{{item.bookingData.address}}</text>
+            <text>{{item.subscribePlace}}</text>
           </view>
         </view>
       </view>
@@ -36,8 +36,8 @@
         <van-empty description="暂无数据" />
       </view>
     </van-tab>
-    <van-tab title="待付款" name="toPay">内容 2</van-tab>
-    <van-tab title="待体检" name="toCheck">内容 3</van-tab>
-    <van-tab title="退款" name="refund">内容 3</van-tab>
+    <van-tab title="待付款" name="0">内容 2</van-tab>
+    <van-tab title="待体检" name="2">内容 3</van-tab>
+    <van-tab title="退款" name="3">内容 3</van-tab>
   </van-tabs>
 </view>
